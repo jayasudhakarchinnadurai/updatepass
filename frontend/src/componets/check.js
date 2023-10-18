@@ -32,9 +32,9 @@ function Check({upemail,setupemail}){
                     toast.success(data.message)
                     navigate("/")
 
-        } else{
+              } else{
                     toast.error(data.message)
-                 }
+                   }
                   
               } catch (error) {
                 toast.error(error) 
