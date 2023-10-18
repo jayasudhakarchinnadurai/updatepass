@@ -61,7 +61,7 @@ function Forgot(){
         <Button variant="primary"  onClick={login} className="login-btn" >
         Login
          </Button><br></br><br></br>
-         <a href='/email' className="forgot-click">Forgot Password?</a>
+         <a onClick={()=>navigate("/email")} className="forgot-click">Forgot Password?</a>
       </Form> 
     </div>
         
