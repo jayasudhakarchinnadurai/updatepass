@@ -59,6 +59,7 @@ form {
   left: 10x;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 .login-btn{

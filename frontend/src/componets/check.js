@@ -30,6 +30,7 @@ function Check({upemail,setupemail}){
                     navigate("/")
                  }else if(data.message === 'update succesfull') {
                     toast.success(data.message)
+                    sessionStorage.clear()
                     navigate("/")
 
               } else{
