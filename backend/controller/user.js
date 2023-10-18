@@ -1,7 +1,7 @@
 const usermodel = require("../schema/userschema.js");
 const userRouter=require("express").Router();
 
-const {passwordchange,passwordupdate,passwodcheck}=require("../auth.js")
+const {passwordchange,passwordupdate,passwodcheck,createtoken,validate}=require("../auth.js")
 
 userRouter.post("/createuser" ,async(req, res)=>{
   const {name, email, password}=req.body
@@ -41,7 +41,7 @@ userRouter.post("/createuser" ,async(req, res)=>{
 
 
 
-userRouter.patch("/edit", async(req,res)=>{
+userRouter.patch("/edit",validate, async(req,res)=>{
   try {
       const {email,password}=req.body
       const user= await usermodel.findOne({email:email});
@@ -73,6 +73,7 @@ userRouter.post("/check",async(req,res)=>{
         const user = await usermodel.findOne({email:email})
         
      if(user){
+        
             const check= await passwodcheck(password,user.password)   
             if(check == true){
                 res.status(200).send({
@@ -105,7 +106,12 @@ userRouter.post("/email",async(req,res)=>{
     try {
         const user=await usermodel.findOne({email:email})
         if(user){
-           return  res.status(201).send({message:"fetch successfull"});
+            const token=createtoken({
+                name:user.name, 
+                email:user.email,
+                id:user._id
+            })
+           return  res.status(201).send({message:"fetch successfull",token});
             
         }else{
             return  res.status(402).send({

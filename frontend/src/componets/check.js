@@ -8,6 +8,7 @@ function Check({upemail,setupemail}){
     const navigate = useNavigate();
     const [updatepass,setupdatepass]=useState("");
     const update =async(e)=>{
+        const token = sessionStorage.getItem('token')
         const upedit ={
            email: upemail,
            password:updatepass
@@ -17,19 +18,20 @@ function Check({upemail,setupemail}){
                       method:"PATCH",
                       body:JSON.stringify(upedit),
                       headers:{
-                          "Content-Type":"application/json"
+                          "Content-Type":"application/json",
+                           Authorization: `Bearer ${token}`
                       }
           
                   })
                   const data = await response.json();
-                  
-                 if(data.message === 'update succesfull') {
+                   if (data.message === "token expried"){
+                    toast.error(data.message)
+                    navigate("/")
+                 }else if(data.message === 'update succesfull') {
                     toast.success(data.message)
                     navigate("/")
 
-                   
-                   
-                 } else{
+        } else{
                     toast.error(data.message)
                  }
                   

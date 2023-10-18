@@ -23,6 +23,7 @@ function Email({upemail,setupemail}){
         
        if(data.message === 'fetch successfull') {
         toast.success(data.message)
+        sessionStorage.setItem("token" ,data.token)
            navigate("/check")
          
        } else{
