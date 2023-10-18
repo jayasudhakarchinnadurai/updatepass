@@ -13,7 +13,7 @@ function Check({upemail,setupemail}){
            password:updatepass
            }
            try {
-            const response = await fetch("http://localhost:9000/api/edit",{
+            const response = await fetch("https://editpassword.onrender.com/api/edit",{
                       method:"PATCH",
                       body:JSON.stringify(upedit),
                       headers:{

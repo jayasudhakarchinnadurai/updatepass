@@ -19,7 +19,7 @@ function Forgot(){
         }
        
         try {
-            const response = await fetch("http://localhost:9000/api/check",{
+            const response = await fetch("https://editpassword.onrender.com/api/check",{
               method:"POST",
               body:JSON.stringify(loguser),
               headers:{
@@ -52,7 +52,7 @@ function Forgot(){
         <Form.Label  className="email">Email</Form.Label>
         <Form.Control type="email" placeholder="Enter email"
          onChange={(e)=>setlogemail(e.target.value)}/>
-        </Form.Group>
+        </Form.Group><br></br>
 
        <Form.Group  controlId="formBasicPassword">
         <Form.Label  className="pass">password</Form.Label><br></br>

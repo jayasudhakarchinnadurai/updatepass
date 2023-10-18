@@ -11,7 +11,7 @@ function Email({upemail,setupemail}){
         email:upemail
     }
     try {
-  const response = await fetch("http://localhost:9000/api/email",{
+  const response = await fetch("https://editpassword.onrender.com/api/email",{
             method:"POST",
             body:JSON.stringify(getmail),
             headers:{

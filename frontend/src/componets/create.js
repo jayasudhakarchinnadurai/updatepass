@@ -27,7 +27,7 @@ const createuser = async(e)=>{
 try {
 
     
-        const response = await fetch ("http://localhost:9000/api/createuser",{
+        const response = await fetch ("https://editpassword.onrender.com/api/createuser",{
             method:"POST",
             body:JSON.stringify(newuser),
             headers:{
