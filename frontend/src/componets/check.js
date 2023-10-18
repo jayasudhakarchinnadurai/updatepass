@@ -26,6 +26,7 @@ function Check({upemail,setupemail}){
                   const data = await response.json();
                    if (data.message === "token expried"){
                     toast.error(data.message)
+                    sessionStorage.clear()
                     navigate("/")
                  }else if(data.message === 'update succesfull') {
                     toast.success(data.message)
